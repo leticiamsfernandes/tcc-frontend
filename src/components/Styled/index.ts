@@ -42,6 +42,7 @@ export const Table = styled.table`
   th {
     background-color: ${theme.color.light};
     border: 1px solid ${theme.color.lightText};
+    font-weight: ${theme.font.weight.bolder};
   }
 
   /* Split cell class */
