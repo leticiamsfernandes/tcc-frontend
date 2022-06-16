@@ -1,12 +1,10 @@
-import { FiCheck, FiCheckCircle, FiCircle, FiInfo } from 'react-icons/fi'
+import { FiArrowRightCircle, FiCheck } from 'react-icons/fi'
 import { useParams } from 'react-router-dom'
 import PageWithHeader from '../../components/PageWithHeader'
-import { MT08, MT32, Table, Title } from '../../components/Styled'
+import { MT04, MT08, MT32, Table, Title } from '../../components/Styled'
 
 function RelatorioAluno(props) {
   const { form_token, prontuario_aluno } = useParams()
-  /* TODO ver tentativas */
-  /*  TODO por questão */
 
   const data = {
     nome_aluno: 'Aluno 1',
@@ -39,6 +37,7 @@ function RelatorioAluno(props) {
       <>
         <MT08 />
         <h3>{title}</h3>
+        <MT04 />
         <Table>
           <thead>
             <tr>
@@ -60,10 +59,10 @@ function RelatorioAluno(props) {
                     </div>
                   ))}
                 </td>
-                <td>{item.done ? <FiCheck /> : null}</td>
+                <td>{item.done ? <FiCheck color="green" /> : null}</td>
                 <td>
                   <a href={`/attempt/${item.id}`}>
-                    <FiInfo />
+                    <FiArrowRightCircle />
                   </a>
                 </td>
               </tr>
