@@ -9,8 +9,8 @@ const Header: React.FC = () => {
   return (
     <>
       <HeaderContainer>
-        <a href="#">Gerar código da tentativa</a>
-        <a href="#">Relatório</a>
+        <a href="/gerartoken">Gerar código da tentativa</a>
+        <a href="/obtertoken">Relatório</a>
       </HeaderContainer>
       <MT04 />
       <WhiteLine />

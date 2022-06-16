@@ -11,11 +11,18 @@ const GenerateToken: React.FC<IProps> = ({ isGenerateScreen }) => {
 
   useEffect(() => {
     if (isGenerateScreen) {
-      setToken(uuid())
+      const id = uuid().split('-')
+      console.log(id)
+      setToken(`${id[1]}-${id[3]}`)
     }
   }, [isGenerateScreen])
 
-  const handleSubmit = useCallback(params => {}, [])
+  const handleSubmit = useCallback(e => {
+    e.preventDefault()
+    const token = e.target.token.value
+
+    window.location.href = `/relatorio/${token}`
+  }, [])
 
   return (
     <PageWithHeader>

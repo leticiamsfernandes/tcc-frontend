@@ -20,3 +20,71 @@ export const HeaderContainer = styled.div`
   margin: 2%;
   margin-bottom: 16px;
 `
+export const Table = styled.table`
+  width: 100%;
+  margin: 0 ${theme.space[2]};
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid ${theme.color.light};
+
+  tr,
+  td,
+  th {
+    border: 1px solid ${theme.color.light};
+  }
+
+  td,
+  th {
+    padding: ${theme.space[2]};
+    text-align: center;
+  }
+
+  th {
+    background-color: ${theme.color.light};
+    border: 1px solid ${theme.color.lightText};
+  }
+
+  /* Split cell class */
+  .split-cell > div {
+    display: inline;
+  }
+
+  .split-cell > div + div {
+    border-left: 2px solid ${theme.color.light};
+    margin-left: ${theme.space[3]};
+    padding-left: ${theme.space[3]};
+  }
+
+  span + span {
+    margin-left: ${theme.space[1]};
+  }
+
+  /* key span */
+  .key {
+    font-weight: ${theme.font.weight.bolder};
+    color: ${theme.color.lightText};
+  }
+
+  .align-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      margin-right: ${theme.space[3]};
+      color: ${theme.color.dark};
+    }
+
+    a {
+      text-decoration: none;
+      margin: 0;
+      padding: 0;
+      width: ${theme.font.size[1]};
+      height: ${theme.font.size[1]};
+    }
+
+    svg {
+      color: ${theme.color.lightText};
+    }
+  }
+`

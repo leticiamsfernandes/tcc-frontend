@@ -11,9 +11,9 @@ export default {
   space: ['0px', '2px', '4px', '8px', '16px', '24px', '32px', '40px'],
   color: {
     background: '#fafafa',
-    light: '#9099A2',
+    light: '#e9ebec',
     dark: '#000000',
-    lightText: '#9099A2',
+    lightText: '#707a85',
     text: '#000000',
   },
   breakpoints: {
