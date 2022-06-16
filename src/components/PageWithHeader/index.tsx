@@ -3,17 +3,15 @@ import { FiMenu } from 'react-icons/fi'
 import theme from '../../styles/theme'
 import { MT04, MT08, WhiteLine } from '../Styled'
 
-import {
-  PageContainer,
-  HeaderContainer,
-  EnterpriseIcon,
-  ContentContainer,
-} from './styles'
+import { PageContainer, HeaderContainer, ContentContainer } from './styles'
 
 const Header: React.FC = () => {
   return (
     <>
-      <HeaderContainer>Header content</HeaderContainer>
+      <HeaderContainer>
+        <a href="#">Gerar código da tentativa</a>
+        <a href="#">Relatório</a>
+      </HeaderContainer>
       <MT04 />
       <WhiteLine />
     </>

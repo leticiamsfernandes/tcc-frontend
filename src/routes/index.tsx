@@ -18,7 +18,11 @@ const Router: React.FC = () => {
   return (
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/gerartoken" component={GenerateToken} />
+      <Route
+        path="/gerartoken"
+        component={() => <GenerateToken isGenerateScreen={true} />}
+      />
+      <Route path="/obtertoken" component={GenerateToken} />
       <Route path="/relatorio/:id" component={Relatorio} />
     </Switch>
   )

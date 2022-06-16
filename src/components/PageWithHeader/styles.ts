@@ -10,6 +10,7 @@ export const HeaderContainer = styled.div`
   margin: ${theme.space[4]} 0;
   display: flex;
   align-items: flex-start;
+  justify-content: space-around;
   flex-direction: row;
 `
 export const EnterpriseIcon = styled.img`
