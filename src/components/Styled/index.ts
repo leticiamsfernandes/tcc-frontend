@@ -16,6 +16,10 @@ export const MT08 = styled.div`
   margin-top: ${theme.space[3]};
 `
 
+export const MT32 = styled.div`
+  margin-top: ${theme.space[6]};
+`
+
 export const HeaderContainer = styled.div`
   margin: 2%;
   margin-bottom: 16px;
@@ -75,17 +79,26 @@ export const Table = styled.table`
       margin-right: ${theme.space[3]};
       color: ${theme.color.dark};
     }
-
-    a {
-      text-decoration: none;
-      margin: 0;
-      padding: 0;
-      width: ${theme.font.size[1]};
-      height: ${theme.font.size[1]};
-    }
-
-    svg {
-      color: ${theme.color.lightText};
-    }
   }
+
+  a {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    width: ${theme.font.size[1]};
+    height: ${theme.font.size[1]};
+  }
+
+  svg {
+    color: ${theme.color.lightText};
+  }
+`
+export const Title = styled.h2`
+  width: 100%;
+  text-align: center;
+  padding: ${theme.space[3]};
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
 `

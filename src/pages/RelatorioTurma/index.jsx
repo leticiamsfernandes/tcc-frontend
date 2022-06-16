@@ -11,15 +11,13 @@ const Title = styled.h2`
   margin-bottom: ${theme.space[3]};
 `
 
-function Relatorio(props) {
-  const { id } = useParams()
-  /* TODO ver tentativas */
-  /*  TODO por questão */
+function RelatorioTurma(props) {
+  const { form_token } = useParams()
 
   const data = [
     {
       id: 1,
-      data: '2020-01-01',
+      date: '2020-01-01',
       aluno: {
         nome: 'Aluno 1',
         prontuario: 'id_aluno',
@@ -35,7 +33,7 @@ function Relatorio(props) {
 
   return (
     <PageWithHeader>
-      <Title>Relatório: {id}</Title>
+      <Title>Relatório: {form_token}</Title>
       <Table>
         <thead>
           <tr>
@@ -62,7 +60,9 @@ function Relatorio(props) {
               </td>
               <td className="align-icon">
                 <span>2</span>
-                <a href={`/relatorio/${id}/aluno/teste`}>
+                <a
+                  href={`/relatorioaluno/${form_token}/${item.aluno.prontuario}`}
+                >
                   <FiInfo />
                 </a>
               </td>
@@ -74,4 +74,4 @@ function Relatorio(props) {
   )
 }
 
-export default Relatorio
+export default RelatorioTurma

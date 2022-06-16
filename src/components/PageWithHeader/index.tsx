@@ -14,6 +14,7 @@ const Header: React.FC = () => {
       </HeaderContainer>
       <MT04 />
       <WhiteLine />
+      <MT08 />
     </>
   )
 }
