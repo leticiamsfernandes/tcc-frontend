@@ -74,7 +74,7 @@ function RelatorioAluno(props) {
   }
 
   return (
-    <PageWithHeader>
+    <PageWithHeader showBackButton>
       <Title>
         Relatório: {form_token} | Aluno: {prontuario_aluno}, {data.nome_aluno}
       </Title>

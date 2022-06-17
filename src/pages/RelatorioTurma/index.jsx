@@ -1,4 +1,4 @@
-import { FiInfo } from 'react-icons/fi'
+import { FiArrowRightCircle } from 'react-icons/fi'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import PageWithHeader from '../../components/PageWithHeader'
@@ -63,7 +63,7 @@ function RelatorioTurma(props) {
                 <a
                   href={`/relatorioaluno/${form_token}/${item.aluno.prontuario}`}
                 >
-                  <FiInfo />
+                  <FiArrowRightCircle />
                 </a>
               </td>
             </tr>

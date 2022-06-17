@@ -19,7 +19,7 @@ const data = {
 
 function RelatorioQuestao() {
   return (
-    <PageWithHeader>
+    <PageWithHeader showBackButton>
       <Title>
         Relatório: {data.form_token} <br /> {data.aluno_nome}, {data.aluno_id}
         <br /> Tentativa {data.id}
