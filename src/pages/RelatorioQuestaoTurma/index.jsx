@@ -1,5 +1,7 @@
+import { useParams } from 'react-router-dom';
 import PageWithHeader from '../../components/PageWithHeader';
 import { Table, Title } from '../../components/Styled';
+import SwitchButton from '../../components/SwitchButton';
 
 const data = {
   aluno_id: 1,
@@ -17,13 +19,15 @@ const data = {
   ],
 };
 
-function RelatorioQuestao() {
+function RelatorioQuestaoTurma() {
+  const { form_token } = useParams();
+
   return (
     <PageWithHeader showBackButton>
       <Title>
-        Relatório: {data.form_token} <br /> {data.aluno_nome}, {data.aluno_id}
-        <br /> Tentativa {data.id}
+        Relatório: {form_token} <br />
       </Title>
+      <SwitchButton activeIndex={1} form_token={form_token} />
       <Table>
         <thead>
           <tr>
@@ -50,4 +54,4 @@ function RelatorioQuestao() {
   );
 }
 
-export default RelatorioQuestao;
+export default RelatorioQuestaoTurma;

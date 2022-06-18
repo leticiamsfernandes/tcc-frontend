@@ -1,18 +1,19 @@
-import { FiArrowRightCircle } from 'react-icons/fi'
-import { useParams } from 'react-router-dom'
-import styled from 'styled-components'
-import PageWithHeader from '../../components/PageWithHeader'
-import { Table } from '../../components/Styled'
-import theme from '../../styles/theme'
+import { FiArrowRightCircle } from 'react-icons/fi';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import PageWithHeader from '../../components/PageWithHeader';
+import { Table } from '../../components/Styled';
+import SwitchButton from '../../components/SwitchButton';
+import theme from '../../styles/theme';
 
 const Title = styled.h2`
   width: 100%;
   text-align: center;
   margin-bottom: ${theme.space[3]};
-`
+`;
 
 function RelatorioTurma(props) {
-  const { form_token } = useParams()
+  const { form_token } = useParams();
 
   const data = [
     {
@@ -29,11 +30,12 @@ function RelatorioTurma(props) {
       ],
       tentativas: 2,
     },
-  ]
+  ];
 
   return (
     <PageWithHeader>
       <Title>Relatório: {form_token}</Title>
+      <SwitchButton form_token={form_token} activeIndex={0} />
       <Table>
         <thead>
           <tr>
@@ -71,7 +73,7 @@ function RelatorioTurma(props) {
         </tbody>
       </Table>
     </PageWithHeader>
-  )
+  );
 }
 
-export default RelatorioTurma
+export default RelatorioTurma;
