@@ -1,12 +1,29 @@
-import { FiArrowRightCircle, FiCheck } from 'react-icons/fi'
-import { useParams } from 'react-router-dom'
-import PageWithHeader from '../../components/PageWithHeader'
-import { MT04, MT08, MT32, Table, Title } from '../../components/Styled'
+import { useEffect, useState } from 'react';
+import { FiArrowRightCircle, FiCheck } from 'react-icons/fi';
+import { useParams } from 'react-router-dom';
+import PageWithHeader from '../../components/PageWithHeader';
+import { MT04, MT08, MT32, Table, Title } from '../../components/Styled';
+import api from '../../services/api';
+import { formatPercentage, timestampToDate } from '../../utils/formatters';
 
 function RelatorioAluno(props) {
-  const { form_token, prontuario_aluno } = useParams()
+  const { form_token, prontuario_aluno } = useParams();
 
-  const data = {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await api.get('/relatorio/aluno', {
+        params: { form_id: form_token, student_id: prontuario_aluno },
+      });
+      console.log(response);
+      setData(response.data);
+    };
+
+    getData();
+  }, []);
+
+  const data2 = {
     nome_aluno: 'Aluno 1',
     best_attempt: {
       id: '2',
@@ -30,9 +47,9 @@ function RelatorioAluno(props) {
         done: false,
       },
     ],
-  }
+  };
 
-  const AttemptTable = ({ title, attempts }) => {
+  const AttemptTable = ({ title, attempts = [] }) => {
     return (
       <>
         <MT08 />
@@ -50,12 +67,14 @@ function RelatorioAluno(props) {
           <tbody>
             {attempts.map(item => (
               <tr key={item.id}>
-                <td>01/01/2020</td>
+                <td>{timestampToDate(item.date)}</td>
                 <td className="split-cell">
-                  {item.skills.map(skill => (
+                  {item?.skills?.map(skill => (
                     <div>
-                      <span className="key">{skill.key}:</span>
-                      <span className="value">{skill.value}</span>
+                      <span className="key">{skill.name}:</span>
+                      <span className="value">
+                        {formatPercentage(skill.value)}
+                      </span>
                     </div>
                   ))}
                 </td>
@@ -70,19 +89,22 @@ function RelatorioAluno(props) {
           </tbody>
         </Table>
       </>
-    )
-  }
+    );
+  };
 
   return (
     <PageWithHeader showBackButton>
       <Title>
-        Relatório: {form_token} | Aluno: {prontuario_aluno}, {data.nome_aluno}
+        Relatório: {form_token} | Aluno: {data.aluno?.nome} ({prontuario_aluno})
       </Title>
       <AttemptTable attempts={data.attempts} title="Melhor tentativa" />
       <MT32 />
-      <AttemptTable attempts={[data.best_attempt]} title="Todas tentativas" />
+      <AttemptTable
+        attempts={data.best_attempt ? [data.best_attempt] : []}
+        title="Todas tentativas"
+      />
     </PageWithHeader>
-  )
+  );
 }
 
-export default RelatorioAluno
+export default RelatorioAluno;

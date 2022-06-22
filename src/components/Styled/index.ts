@@ -51,18 +51,9 @@ export const Table = styled.table`
 
   /* Split cell class */
   .split-cell > div {
-    /* display: inline; */
     text-align: left;
     padding-left: ${theme.space[2]};
   }
-
-  /*
-  .split-cell > div + div {
-    border-left: 2px solid ${theme.color.light};
-    margin-left: ${theme.space[3]};
-    padding-left: ${theme.space[3]};
-  }
-  */
 
   span + span {
     margin-left: ${theme.space[1]};

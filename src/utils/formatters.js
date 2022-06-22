@@ -7,4 +7,4 @@ export const timestampToDate = timestamp => {
 };
 
 export const formatPercentage = percentageNumber =>
-  (percentageNumber * 100).toFixed(2);
+  `${(percentageNumber * 100).toFixed(2)}%`;

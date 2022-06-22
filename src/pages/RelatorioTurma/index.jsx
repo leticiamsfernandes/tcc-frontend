@@ -31,23 +31,6 @@ function RelatorioTurma() {
     getData();
   }, []);
 
-  const data2 = [
-    {
-      id: 1,
-      date: '2020-01-01',
-      aluno: {
-        nome: 'Aluno 1',
-        prontuario: 'id_aluno',
-      },
-      skills: [
-        { key: 'skill 1', value: '0.98%' },
-        { key: 'skill 2', value: '0.98%' },
-        { key: 'skill 3', value: '0.98%' },
-      ],
-      tentativas: 2,
-    },
-  ];
-
   return (
     <PageWithHeader>
       <Title>Relatório: {form_token}</Title>
