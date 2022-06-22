@@ -95,7 +95,8 @@ function RelatorioAluno(props) {
   return (
     <PageWithHeader showBackButton>
       <Title>
-        Relatório: {form_token} | Aluno: {data.aluno?.nome} ({prontuario_aluno})
+        Relatório: {data.form_token} | Aluno: {data.aluno?.nome} (
+        {prontuario_aluno})
       </Title>
       <AttemptTable attempts={data.attempts} title="Melhor tentativa" />
       <MT32 />

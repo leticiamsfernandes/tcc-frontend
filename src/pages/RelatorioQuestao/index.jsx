@@ -1,6 +1,9 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import PageWithHeader from '../../components/PageWithHeader';
 import { Table, Title } from '../../components/Styled';
-
+import api from '../../services/api';
+/* 
 const data = {
   aluno_id: 1,
   aluno_nome: 'Aluno 1',
@@ -15,14 +18,30 @@ const data = {
       tentativas: 5,
     },
   ],
-};
+}; */
 
 function RelatorioQuestao() {
+  const { attempt_id } = useParams();
+
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await api.get('/relatorio/attempt', {
+        params: { attempt_id },
+      });
+      setData(response.data);
+    };
+
+    getData();
+  }, []);
+
   return (
     <PageWithHeader showBackButton>
       <Title>
-        Relatório: {data.form_token} <br /> {data.aluno_nome}, {data.aluno_id}
-        <br /> Tentativa {data.id}
+        Relatório: {data.form_id} <br /> {data.aluno?.nome} (
+        {data.aluno?.prontuario})
+        <br /> Tentativa {attempt_id}
       </Title>
       <Table>
         <thead>
@@ -35,13 +54,13 @@ function RelatorioQuestao() {
           </tr>
         </thead>
         <tbody>
-          {data.reports?.map(item => (
+          {data.report?.map(item => (
             <tr key={item.id}>
-              <td>{item.questao}</td>
-              <td>{item.falhas}</td>
-              <td>{item.sucessos}</td>
-              <td>{item.dicas}</td>
-              <td>{item.tentativas}</td>
+              <td>{item.question_name}</td>
+              <td>{item.failures}</td>
+              <td>{item.success}</td>
+              <td>{item.hints_requests}</td>
+              <td>{item.total_attempts}</td>
             </tr>
           ))}
         </tbody>
