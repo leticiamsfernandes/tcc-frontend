@@ -1,26 +1,24 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PageWithHeader from '../../components/PageWithHeader';
 import { Table, Title } from '../../components/Styled';
 import SwitchButton from '../../components/SwitchButton';
-
-const data = {
-  aluno_id: 1,
-  aluno_nome: 'Aluno 1',
-  form_token: 'token',
-  reports: [
-    {
-      id: 1,
-      questao: 'Questão 1',
-      falhas: 2,
-      sucessos: 3,
-      dicas: 4,
-      tentativas: 5,
-    },
-  ],
-};
+import api from '../../services/api';
 
 function RelatorioQuestaoTurma() {
   const { form_token } = useParams();
+
+  const [data, setData] = useState({});
+  useEffect(() => {
+    const getData = async () => {
+      const response = await api.get('/relatorio/turma/questoes', {
+        params: { form_token },
+      });
+      setData(response.data);
+    };
+
+    getData();
+  }, []);
 
   return (
     <PageWithHeader showBackButton>
@@ -39,13 +37,13 @@ function RelatorioQuestaoTurma() {
           </tr>
         </thead>
         <tbody>
-          {data.reports?.map(item => (
+          {data.report?.map(item => (
             <tr key={item.id}>
-              <td>{item.questao}</td>
-              <td>{item.falhas}</td>
-              <td>{item.sucessos}</td>
-              <td>{item.dicas}</td>
-              <td>{item.tentativas}</td>
+              <td>{item.question_name}</td>
+              <td>{item.failures}</td>
+              <td>{item.success}</td>
+              <td>{item.hints_requests}</td>
+              <td>{item.total_attempts}</td>
             </tr>
           ))}
         </tbody>

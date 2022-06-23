@@ -98,12 +98,12 @@ function RelatorioAluno(props) {
         Relatório: {data.form_token} | Aluno: {data.aluno?.nome} (
         {prontuario_aluno})
       </Title>
-      <AttemptTable attempts={data.attempts} title="Melhor tentativa" />
-      <MT32 />
       <AttemptTable
         attempts={data.best_attempt ? [data.best_attempt] : []}
-        title="Todas tentativas"
+        title="Melhor tentativa"
       />
+      <MT32 />
+      <AttemptTable attempts={data.attempts} title="Todas tentativas" />
     </PageWithHeader>
   );
 }
